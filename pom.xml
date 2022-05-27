@@ -39,6 +39,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.graphstream</groupId>
+            <artifactId>gs-boids</artifactId>
+            <version>dev-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.jhlabs</groupId>
             <artifactId>javaproj</artifactId>
             <version>1.0</version>
