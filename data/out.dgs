@@ -1,0 +1,60 @@
+DGS004
+null 0 0
+cg  "ui.quality":true
+cg  "ui.antialias":true
+cg  "ui.stylesheet":"url(data/style.css);"
+an "0"
+cn "0"  "ui.label":"0"
+cn "0"  "ui.class":"tag2"
+cn "0"  "tag":"tag2"
+an "1"
+cn "1"  "ui.label":"1"
+cn "1"  "ui.class":"tag2"
+cn "1"  "tag":"tag2"
+an "2"
+cn "2"  "ui.label":"2"
+cn "2"  "ui.class":"tag2"
+cn "2"  "tag":"tag2"
+an "3"
+cn "3"  "ui.label":"3"
+cn "3"  "ui.class":"tag2"
+cn "3"  "tag":"tag2"
+an "4"
+cn "4"  "ui.label":"4"
+cn "4"  "ui.class":"tag2"
+cn "4"  "tag":"tag2"
+ae "id_0_1" "0" > "1"
+ce "id_0_1"  "weight":11.000000
+ce "id_0_1"  "ui.class":"tag2"
+ce "id_0_1"  "tag":"tag2"
+ce "id_0_1"  "ui.label":"11"
+ae "id_0_2" "0" > "2"
+ce "id_0_2"  "weight":-4.000000
+ce "id_0_2"  "ui.class":"tag2"
+ce "id_0_2"  "tag":"tag2"
+ce "id_0_2"  "ui.label":"-4"
+ae "id_1_3" "1" > "3"
+ce "id_1_3"  "weight":-5.000000
+ce "id_1_3"  "ui.class":"tag2"
+ce "id_1_3"  "tag":"tag2"
+ce "id_1_3"  "ui.label":"-5"
+ae "id_2_4" "2" > "4"
+ce "id_2_4"  "weight":7.000000
+ce "id_2_4"  "ui.class":"tag2"
+ce "id_2_4"  "tag":"tag2"
+ce "id_2_4"  "ui.label":"7"
+ae "id_3_0" "3" > "0"
+ce "id_3_0"  "weight":2.000000
+ce "id_3_0"  "ui.class":"tag2"
+ce "id_3_0"  "tag":"tag2"
+ce "id_3_0"  "ui.label":"2"
+ae "id_3_2" "3" > "2"
+ce "id_3_2"  "weight":8.000000
+ce "id_3_2"  "ui.class":"tag2"
+ce "id_3_2"  "tag":"tag2"
+ce "id_3_2"  "ui.label":"8"
+ae "id_4_2" "4" > "2"
+ce "id_4_2"  "weight":19.000000
+ce "id_4_2"  "ui.class":"tag2"
+ce "id_4_2"  "tag":"tag2"
+ce "id_4_2"  "ui.label":"19"
