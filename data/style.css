@@ -1,5 +1,5 @@
 node {
-    size:         20px;
+    size:         50px;
     shape:        circle;
 
     fill-color:   white;
@@ -8,20 +8,22 @@ node {
     text-size:    16;
     text-style:   bold;
     text-alignment: center;
-    text-color:   #FFF;
+    text-color:   #555;
     text-offset: 0px, -4px;
     /*text-padding: 20px, 20px;*/
 }
 edge {
-    /*size:           2px;*/
+    size:           2px;
+    arrow-size:     4px;
     fill-mode:      plain;
     /*fill-color:     gray;*/
+    text-alignment: along;
     text-size:      14;
     text-style:     bold-italic;
     text-color:     #555;
-    text-alignment: along;
-    text-offset:    0px,-8px;
-    text-padding:   0px,5px;
+    text-offset:    0px,
+    8px;
+    /*text-padding:   0px,5px;*/
 }
 
 node.source {
@@ -45,6 +47,9 @@ node.tag1 {
 edge.tag1 {
     stroke-mode:  plain;
     stroke-color: grey;
+    size: 4px;
+    arrow-size: 4px;
+    fill-color: black;
 }
 
 node.tag2 {
@@ -55,5 +60,8 @@ node.tag2 {
 
 edge.tag2 {
     stroke-mode:  plain;
-    stroke-color: purple;
+    stroke-color: grey;
+    fill-color: gray;
+    size: 2px;
+    arrow-size: 2px;
 }

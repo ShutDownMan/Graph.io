@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class DepthFirstSearchAnimator {
     public static void animate(GraphHandler gh, String source) {
-
         if(gh.graph.getNode(source) == null) {
             System.out.println("Origem invalida!");
             return;

@@ -30,4 +30,16 @@ public class GraphHandler {
         newEdge.setAttribute("weight", Double.parseDouble(weight));
         newEdge.setAttribute("ui.label", weight);
     }
+
+    public void clearClasses() {
+        if(this.graph != null) {
+            this.graph.nodes().forEach(node -> {
+                node.setAttribute("ui.class", (Object) null);
+            });
+            this.graph.edges().forEach(edge -> {
+                edge.setAttribute("ui.class", (Object) null);
+            });
+
+        }
+    }
 }

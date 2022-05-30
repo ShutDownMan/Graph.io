@@ -1,7 +1,5 @@
 package com.jesuisjedi;
 
-import org.graphstream.graph.Graph;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -66,12 +64,14 @@ public class Main {
                     break;
                 case "K":
                     if(gh.graph != null) {
+                        Main.kruskalTree(reader, gh);
                     } else {
                         System.out.println("Carregue um arquivo valido antes de executar este comando.");
                     }
                     break;
                 case "P":
                     if(gh.graph != null) {
+                        Main.primTree(reader, gh);
                     }
                     break;
                 case "H":
@@ -100,9 +100,20 @@ public class Main {
         System.exit(0);
     }
 
+    private static void primTree(BufferedReader reader, GraphHandler gh) {
+        gh.clearClasses();
+        PrimAnimator.animate(gh);
+    }
+
+    private static void kruskalTree(BufferedReader reader, GraphHandler gh) {
+        gh.clearClasses();
+        KruskalSearchAnimator.animate(gh);
+    }
+
     private static void bellmanFordSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
+        gh.clearClasses();
         try {
             System.out.print("Insira o nome do no de origem da busca: ");
             source = reader.readLine();
@@ -115,6 +126,7 @@ public class Main {
     private static void breadthFirstSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
+        gh.clearClasses();
         try {
             System.out.print("Insira o nome do no de origem da busca: ");
             source = reader.readLine();
@@ -127,6 +139,7 @@ public class Main {
     private static void depthFirstSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
+        gh.clearClasses();
         try {
             System.out.print("Insira o nome do no de origem da busca: ");
             source = reader.readLine();
