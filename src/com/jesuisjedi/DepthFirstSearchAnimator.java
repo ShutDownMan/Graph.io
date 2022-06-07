@@ -13,17 +13,17 @@ public class DepthFirstSearchAnimator {
             return;
         }
 
-        gh.graph.stepBegins(0);
-
-        gh.graph.setAttribute("ui.quality");
-        gh.graph.setAttribute("ui.antialias");
-        gh.graph.setAttribute("ui.stylesheet", "url(data/style.css);");
-
-        gh.graph.getNode(source).setAttribute("ui.class", "source");
-
-        gh.graph.stepBegins(1);
-
-        gh.viewer = gh.graph.display();
+//        gh.graph.stepBegins(0);
+//
+//        gh.graph.setAttribute("ui.quality");
+//        gh.graph.setAttribute("ui.antialias");
+//        gh.graph.setAttribute("ui.stylesheet", "url(data/style.css);");
+//
+//        gh.graph.getNode(source).setAttribute("ui.class", "source");
+//
+//        gh.graph.stepBegins(1);
+//
+//        gh.viewer = gh.graph.display();
 
         try {
             Thread.sleep(2000);
@@ -50,7 +50,6 @@ public class DepthFirstSearchAnimator {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private static void searchGraphRec(GraphHandler gh, Node currentNode) throws InterruptedException {

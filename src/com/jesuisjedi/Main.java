@@ -24,7 +24,14 @@ public class Main {
                 case "L":
                     filePath = Main.loadFile(reader);
                     if(filePath != null) {
-                        gh = GraphParser.ParseFile(filePath);
+                        boolean loadSimpleGraph = true;
+
+                        System.out.println("Carregar grafo simples? [S/n]");
+                        String loadAsModelChoice = reader.readLine();
+
+                        loadSimpleGraph = (!loadAsModelChoice.equalsIgnoreCase("N"));
+
+                        gh = GraphParser.ParseFile(filePath, loadSimpleGraph);
                         System.out.println(filePath);
                     }
                     break;
@@ -101,52 +108,70 @@ public class Main {
     }
 
     private static void primTree(BufferedReader reader, GraphHandler gh) {
-        gh.clearClasses();
-        PrimAnimator.animate(gh);
+        if(!gh.isSimpleGraph) {
+            gh.clearClasses();
+            PrimAnimator.animate(gh);
+        } else {
+            GraphAlgorithms.Prim(gh);
+        }
     }
 
     private static void kruskalTree(BufferedReader reader, GraphHandler gh) {
-        gh.clearClasses();
-        KruskalSearchAnimator.animate(gh);
+        if(!gh.isSimpleGraph) {
+            gh.clearClasses();
+            KruskalSearchAnimator.animate(gh);
+        }
     }
 
     private static void bellmanFordSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
-        gh.clearClasses();
         try {
-            System.out.print("Insira o nome do no de origem da busca: ");
+            System.out.print("Insira o nome do nó de origem da busca: ");
             source = reader.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        BellmanFordSearchAnimator.animate(gh, source);
+        if(!gh.isSimpleGraph) {
+            gh.clearClasses();
+            BellmanFordSearchAnimator.animate(gh, source);
+        } else {
+            GraphAlgorithms.BellmanFord(gh, source);
+        }
     }
 
     private static void breadthFirstSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
-        gh.clearClasses();
         try {
             System.out.print("Insira o nome do no de origem da busca: ");
             source = reader.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        BreadthFirstSearchAnimator.animate(gh, source);
+        if(!gh.isSimpleGraph) {
+            gh.clearClasses();
+            BreadthFirstSearchAnimator.animate(gh, source);
+        } else {
+            GraphAlgorithms.BFS(gh, source);
+        }
     }
 
     private static void depthFirstSearch(BufferedReader reader, GraphHandler gh) {
         String source = null;
 
-        gh.clearClasses();
         try {
             System.out.print("Insira o nome do no de origem da busca: ");
             source = reader.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        DepthFirstSearchAnimator.animate(gh, source);
+        if(!gh.isSimpleGraph) {
+            gh.clearClasses();
+            DepthFirstSearchAnimator.animate(gh, source);
+        } else {
+            GraphAlgorithms.DFS(gh, source);
+        }
     }
 
     private static Path loadFile(BufferedReader reader) {

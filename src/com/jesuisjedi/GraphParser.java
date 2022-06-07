@@ -13,12 +13,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GraphParser {
-    public static GraphHandler ParseFile(Path filePath) {
-        System.setProperty("org.graphstream.ui", "swing");
-
-        Graph graph = new SingleGraph("Graph.io");
-        GraphHandler gh = new GraphHandler(graph);
+    public static GraphHandler ParseFile(Path filePath, boolean loadSimpleModel) {
+        GraphHandler gh;
         File file = new File(String.valueOf(filePath));
+        if(!loadSimpleModel) {
+            Graph graph;
+            System.setProperty("org.graphstream.ui", "swing");
+
+            graph = new SingleGraph("Graph.io");
+            gh = new GraphHandler(graph);
+        } else {
+            SimpleGraph graph = new SimpleGraph();
+            gh = new GraphHandler(graph);
+        }
 
         try {
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -50,7 +57,11 @@ public class GraphParser {
             Matcher m = r.matcher(line);
 
             if (m.find()) {
-                gh.addVertice(m.group("source"), m.group("destination"), m.group("weight"));
+                if(gh.isSimpleGraph) {
+                    gh.addVertex(m.group("source"), m.group("destination"), Double.parseDouble(m.group("weight")));
+                } else {
+                    gh.addVertexSimple(m.group("source"), m.group("destination"), Double.parseDouble(m.group("weight")));
+                }
                 System.out.println("Origem: " + m.group("source") );
                 System.out.println("Destino: " + m.group("destination") );
                 System.out.println("Peso: " + m.group("weight") );

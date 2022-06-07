@@ -13,18 +13,6 @@ public class BellmanFordSearchAnimator {
             return;
         }
 
-        gh.graph.stepBegins(0);
-
-        gh.graph.setAttribute("ui.quality");
-        gh.graph.setAttribute("ui.antialias");
-        gh.graph.setAttribute("ui.stylesheet", "url(data/style.css);");
-
-        gh.graph.getNode(source).setAttribute("ui.class", "source");
-
-        gh.graph.stepBegins(1);
-
-        gh.viewer = gh.graph.display();
-
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -82,10 +70,10 @@ public class BellmanFordSearchAnimator {
 
                     v.setAttribute("ui.class", "tag1");
                     parentEdge.setAttribute("ui.class", "tag1");
+                    v = parentEdge.getOpposite(v);
+                    v.setAttribute("ui.class", "tag1");
 
                     Thread.sleep(1000);
-
-                    v = parentEdge.getOpposite(v);
                 }
             }
 

@@ -16,14 +16,6 @@ public class KruskalSearchAnimator {
     public static void animate(GraphHandler gh) {
         gh.graph.stepBegins(0);
 
-        gh.graph.setAttribute("ui.quality");
-        gh.graph.setAttribute("ui.antialias");
-        gh.graph.setAttribute("ui.stylesheet", "url(data/style.css);");
-
-        gh.graph.stepBegins(1);
-
-        gh.viewer = gh.graph.display();
-
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
