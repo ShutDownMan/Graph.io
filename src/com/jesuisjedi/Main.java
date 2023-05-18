@@ -36,7 +36,7 @@ public class Main {
                     }
                     break;
                 case "S":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         if(gh.viewer != null) {
                             gh.viewer.close();
                         }
@@ -49,36 +49,46 @@ public class Main {
                     }
                     break;
                 case "BP":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         Main.depthFirstSearch(reader, gh);
                     } else {
                         System.out.println("Carregue um arquivo valido antes de executar este comando.");
                     }
                     break;
                 case "BL":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         Main.breadthFirstSearch(reader, gh);
                     } else {
                         System.out.println("Carregue um arquivo valido antes de executar este comando.");
                     }
                     break;
                 case "BF":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         Main.bellmanFordSearch(reader, gh);
                     } else {
                         System.out.println("Carregue um arquivo valido antes de executar este comando.");
                     }
                     break;
+                case "D":
+                    if(gh != null && (gh.graph != null || gh.simpleGraph != null)) {
+                        Main.dijkstraSearch(reader, gh);
+                    }
+                    break;
                 case "K":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         Main.kruskalTree(reader, gh);
                     } else {
                         System.out.println("Carregue um arquivo valido antes de executar este comando.");
                     }
                     break;
                 case "P":
-                    if(gh.graph != null) {
+                    if((gh.graph != null || gh.simpleGraph != null)) {
                         Main.primTree(reader, gh);
+                    }
+                    break;
+                case "FW":
+                    if(gh != null && (gh.graph != null || gh.simpleGraph != null)) {
+                        Main.floydWarshallTree(reader, gh);
                     }
                     break;
                 case "H":
@@ -88,8 +98,10 @@ public class Main {
                     System.out.println("(BP) Busca em Profundidade");
                     System.out.println("(BL) Busca em Largura");
                     System.out.println("(BF) Bellman-Ford");
+                    System.out.println("(D) Dijkstra");
                     System.out.println("(K) Kruskal");
                     System.out.println("(P) Prim");
+                    System.out.println("(FW) Floyd-Warshall");
                     System.out.println("(Q) Sair");
                     System.out.println("(H) Ajuda");
                     break;
@@ -105,6 +117,33 @@ public class Main {
         } while (tryAgain);
 
         System.exit(0);
+    }
+
+    private static void dijkstraSearch(BufferedReader reader, GraphHandler gh) {
+        String source = null;
+
+        try {
+            System.out.print("Insira o nome do nó de origem da busca: ");
+            source = reader.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(gh.isSimpleGraph) {
+            GraphAlgorithms.Dijsktra(gh, source);
+        } else {
+            gh.clearClasses();
+            DijkstraAnimator.animate(gh, source);
+        }
+    }
+
+    private static void floydWarshallTree(BufferedReader reader, GraphHandler gh) {
+        if(gh.isSimpleGraph) {
+            GraphAlgorithms.FloydWarshall(gh);
+        } else {
+            gh.clearClasses();
+            // FloydWarshallAnimator.animate();
+        }
     }
 
     private static void primTree(BufferedReader reader, GraphHandler gh) {

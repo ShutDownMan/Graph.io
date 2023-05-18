@@ -15,6 +15,10 @@ public class SimpleNode {
 
     public SimpleNode(String ID) {
         this.ID = ID;
+        this.edges = new LinkedList<>();
+        this.leavingEdges = new LinkedList<>();
+        this.enteringEdges = new LinkedList<>();
+        this.nodes = new LinkedList<>();
     }
 
     public void addEdge(SimpleEdge edge) {
@@ -35,5 +39,9 @@ public class SimpleNode {
 
     public String getId() {
         return this.ID;
+    }
+
+    public int getIndex() {
+        return Integer.parseInt(this.ID);
     }
 }

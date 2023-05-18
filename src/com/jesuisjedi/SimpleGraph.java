@@ -9,10 +9,14 @@ public class SimpleGraph {
 
     public SimpleGraph() {
         this.isDirected = false;
+        this.nodes = new ArrayList<>();
+        this.edges = new ArrayList<>();
     }
 
     public SimpleGraph(boolean isDirected) {
         this.isDirected = isDirected;
+        this.nodes = new ArrayList<>();
+        this.edges = new ArrayList<>();
     }
 
     public void addEdge(String edgeID, SimpleNode source, SimpleNode target, double weight) {
@@ -43,7 +47,25 @@ public class SimpleGraph {
     }
 
     public SimpleNode getNode(String nodeID) {
-        return this.nodes.stream().filter(node -> node.ID.equals(nodeID)).findFirst().get();
+        if(this.nodes == null) {
+            System.out.println("NODES NULL");
+            return null;
+        }
+        if(this.nodes.stream().anyMatch(node -> node.ID.equals(nodeID)))
+            return this.nodes.stream().filter(node -> node.ID.equals(nodeID)).findFirst().get();
+
+        return null;
+    }
+
+    public SimpleEdge getEdge(SimpleNode n0, SimpleNode n1) {
+        if(this.edges == null) {
+            System.out.println("EDGES NULL");
+            return null;
+        }
+        if(this.edges.stream().anyMatch(edge -> edge.source.equals(n0) && edge.target.equals(n1)))
+            return this.edges.stream().filter(edge -> edge.source.equals(n0) && edge.target.equals(n1)).findFirst().get();
+
+        return null;
     }
 
     public SimpleNode addNode(String nodeID) {

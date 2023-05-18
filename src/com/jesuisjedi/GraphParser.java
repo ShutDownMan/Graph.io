@@ -16,14 +16,14 @@ public class GraphParser {
     public static GraphHandler ParseFile(Path filePath, boolean loadSimpleModel) {
         GraphHandler gh;
         File file = new File(String.valueOf(filePath));
-        if(!loadSimpleModel) {
+        if(loadSimpleModel) {
+            SimpleGraph graph = new SimpleGraph();
+            gh = new GraphHandler(graph);
+        } else {
             Graph graph;
             System.setProperty("org.graphstream.ui", "swing");
 
             graph = new SingleGraph("Graph.io");
-            gh = new GraphHandler(graph);
-        } else {
-            SimpleGraph graph = new SimpleGraph();
             gh = new GraphHandler(graph);
         }
 
@@ -58,9 +58,9 @@ public class GraphParser {
 
             if (m.find()) {
                 if(gh.isSimpleGraph) {
-                    gh.addVertex(m.group("source"), m.group("destination"), Double.parseDouble(m.group("weight")));
-                } else {
                     gh.addVertexSimple(m.group("source"), m.group("destination"), Double.parseDouble(m.group("weight")));
+                } else {
+                    gh.addVertex(m.group("source"), m.group("destination"), Double.parseDouble(m.group("weight")));
                 }
                 System.out.println("Origem: " + m.group("source") );
                 System.out.println("Destino: " + m.group("destination") );
